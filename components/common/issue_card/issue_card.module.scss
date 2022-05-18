@@ -1,0 +1,20 @@
+.list-wrapper {
+  width: 97%;
+  margin: 0 auto;
+}
+
+.item-wrapper {
+  background-color: antiquewhite;
+  border: solid 1px red;
+  margin:.5rem 0;
+  .item-title {
+    display: block;
+    width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item-extra {
+    display: block;
+    color: red;
+  }
+}

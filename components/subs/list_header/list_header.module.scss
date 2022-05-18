@@ -1,0 +1,7 @@
+.list-parent-header{
+  display: flex;
+  justify-content: space-between;
+  :nth-child(2){
+    color: red;
+  }
+}

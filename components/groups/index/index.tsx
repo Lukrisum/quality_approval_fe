@@ -6,8 +6,14 @@ export default function Index() {
   return (
     <>
       {/* <Header /> */}
+
+      {/* 基本信息 */}
       <Info />
+
+      {/* 基本素质（扣分事项） */}
       <Quality />
+
+      
     </>
   )
 }
