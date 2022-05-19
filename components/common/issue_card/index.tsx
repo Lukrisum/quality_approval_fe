@@ -27,7 +27,7 @@ const IssueItem = (props: any) => {
           <Button size="mini" onClick={(e) => handelDeleteIssue(e)}>删除</Button>
         </>
       }
-      className={mod['item-wrapper']}
+      className={(props.type === 'Y') ? mod['item-wrapper-Y'] : mod['item-wrapper-N']}
       onClick={() => handelDeleteIssue(props.id)}
     />
   )
@@ -35,7 +35,7 @@ const IssueItem = (props: any) => {
 
 export default function IssueCard(props: any) {
 
-  const [list, setList] = useState([])
+  const [list, setList] = useState<any>([])
   const [isPop, setIsPop] = useState(false)
   const [issue, setIssue] = useState()
 
@@ -58,7 +58,11 @@ export default function IssueCard(props: any) {
 
   return (
     <Card
-      title={props.cardName}
+      title={
+        <span className={mod["card-title"]}>
+          {props.cardName}
+        </span>
+      }
       extra={
         <Button
           size="mini"
@@ -70,8 +74,8 @@ export default function IssueCard(props: any) {
 
       {
         list.length == 0
-          ? <Empty description="无扣分事项" />
-          : list?.map((content: Iissue, index) => {
+          ? <Empty description={props.emptyDescription} />
+          : list?.map((content: Iissue, index: number) => {
             return (
               <IssueItem
                 title={content.title}
@@ -79,6 +83,7 @@ export default function IssueCard(props: any) {
                 key={index || 0}
                 id={props.cardKey}
                 setList={setList}
+                type={props.type}
               />
             )
           })

@@ -1,9 +1,9 @@
-.list-wrapper {
-  width: 97%;
-  margin: 0 auto;
+.card-title{
+  display: inline-block;
+  width: 12.5rem;
 }
 
-.item-wrapper {
+.item-wrapper-N {
   background-color: antiquewhite;
   border: solid 1px red;
   margin:.5rem 0;
@@ -12,9 +12,27 @@
     width: 7rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: .9rem;
   }
   .item-extra {
     display: block;
     color: red;
+  }
+}
+
+.item-wrapper-Y {
+  background-color: antiquewhite;
+  border: solid 1px green;
+  margin:.5rem 0;
+  .item-title {
+    display: block;
+    width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9rem;
+  }
+  .item-extra {
+    display: block;
+    color: green;
   }
 }
