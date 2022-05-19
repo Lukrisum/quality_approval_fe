@@ -1,6 +1,6 @@
 
 ## Abstruct 
-This is a [Next.js](https://nextjs.org/) project, with [Ant Desingn](https://ant.design/index-cn) integrated.
+This is a [Next.js](https://nextjs.org/) project, with [Ant Desingn Mobile 5.0](https://mobile.ant.design/zh) integrated.
 ## Quick Start
 
 **Initialize the project**
