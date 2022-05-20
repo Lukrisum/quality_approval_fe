@@ -3,6 +3,11 @@ import React from "react";
 import mod from "./submit.module.scss"
 
 export default function Submit() {
+
+  const handelSkip = () => {
+    
+  }
+
   return (
     <div className={mod["submit-wrapper"]}>
       <Space
@@ -14,12 +19,22 @@ export default function Submit() {
       >
         <Button
           style={{
-            '--border-color':'rgb(22,119,255)'
+            '--border-color': 'rgb(49,160,254)',
+            'width': '10rem'
           }}
+          onClick={handelSkip}
         >
           暂 存
         </Button>
-        <Button color="primary">提 交</Button>
+
+        <Button
+          color="primary"
+          style={{
+            'width': '10rem'
+          }}>
+          提 交
+        </Button>
+
       </Space>
     </div>
   )

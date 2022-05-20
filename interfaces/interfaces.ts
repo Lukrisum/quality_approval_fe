@@ -1,7 +1,8 @@
 export interface Iissue {
   title: string,
   score: number,
-  operate?: string
+  operate?: string,
+  id:string
 }
 
 export interface Iinfo {

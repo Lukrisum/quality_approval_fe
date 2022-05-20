@@ -9,7 +9,7 @@ export default function Quality() {
   return (
     <List
       header={
-        <ParentListHeader title='🚨 扣分事项（满分 100分）' extra={`得分：${score}`} />
+        <ParentListHeader title='🚨 扣分事项（满分：100）' extra={`得分：${score}`} />
       }
     >
       <IssueCard type='N' cardName="思想道德素质（满分 40分）" cardKey="A1" emptyDescription="无扣分事项"></IssueCard>
