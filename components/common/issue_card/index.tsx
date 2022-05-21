@@ -4,23 +4,36 @@ import { Button, Card } from "antd-mobile";
 import { Empty } from "antd-mobile";
 import Link from "next/link";
 import { Iissue } from "../../../interfaces/interfaces";
-
-import { testAtom } from "../../../model/quality";
 import { useAtom } from "jotai";
-import { ID } from "../../subs/edit";
+import { IDAtom, isAddAtom } from "../../subs/edit";
+import useGetList from "../../../utils/get_list";
 
 const IssueItem = (props: any) => {
-  const [IdAtom,setIdAtom] = useAtom(ID)
+  const [id, setId] = useAtom(IDAtom)
 
-  const skipToEdit = () => {
+  const getListDelete = () => {
+    let newList = [...props.list]
 
+    newList.map((issue, index) => {
+      if (issue.id === props.id) {
+        newList = newList.splice(0, index).concat(newList.splice(index + 1))
+      }
+    })
+
+    return newList
   }
 
   const handelDeleteIssue = (e: any) => {
     e.stopPropagation()
     e.preventDefault()
-    localStorage.removeItem(props.id)
-    props.setList([])
+
+    // todo add localhost
+    // console.log(props.id.slice(0, 2))
+    // localStorage.removeItem(props.id.slice(0, 2))
+
+    // props.setList([])
+    props.setList(getListDelete())
+    // localStorage.setItem(`${props.id.slice(0, 2)}`,JSON.stringify(getListDelete()))
   }
 
   return (
@@ -37,7 +50,7 @@ const IssueItem = (props: any) => {
             </>
           }
           className={(props.type === 'Y') ? mod['item-wrapper-Y'] : mod['item-wrapper-N']}
-          onClick={()=>{setIdAtom(props.id)}}
+          onClick={() => { setId(props.id) }}
         />
       </a>
     </Link>
@@ -45,29 +58,19 @@ const IssueItem = (props: any) => {
 }
 
 export default function IssueCard(props: any) {
+  const [id, setId] = useAtom(IDAtom)
+  const [isAdd, setIsAdd] = useAtom(isAddAtom)
+  const [list, setList] = useGetList(props.cardKey)
 
-  const [list, setList] = useAtom(testAtom)
-  const [isPop, setIsPop] = useState(false)
-  const [issue, setIssue] = useState()
+  // todo localhost __init
+  // useEffect(() => {
+  //   if (list.length === 0) {
+  //     // todo 
+  //     let tempList = JSON.parse(localStorage.getItem(props.cardKey) || '[]')
 
-  console.log(list)
-
-  const handelAddIssue = (issue: Iissue) => {
-    setIsPop(true)
-    if (issue !== undefined) {
-      let newList = [...list]
-      newList.push(issue)
-      localStorage.setItem(props.cardKey, JSON.stringify(newList))
-      setList(newList)
-    }
-  }
-
-  useEffect(() => {
-    if (list.length === 0) {
-      let tempList = JSON.parse(localStorage.getItem(props.cardKey) || '[]')
-      setList(tempList)
-    }
-  }, [])
+  //     setList(tempList)
+  //   }
+  // }, [])
 
   const getId = (index: number) => {
     return props.cardKey + "__" + index.toString() + "__" + `${Date.now()}`
@@ -81,26 +84,36 @@ export default function IssueCard(props: any) {
         </span>
       }
       extra={
-        <Button
-          size="mini"
-          // todo id 的 index = {list.length - 1}
-          onClick={() => handelAddIssue({ title: "nmmsl", score: 200, id:`${getId(list.length)}` })}
-        >
-          添加
-        </Button>
+        <Link href="/pages/edit">
+          <a>
+            <Button
+              size="mini"
+              // onClick={(e) => handelAddIssue(e, { title: "nmmsl", score: 200, id: `${getId(list.length)}` })}
+              onClick={() => { 
+                setId(getId(list.length)) 
+                setIsAdd(true)
+              }}
+            >
+              添加
+            </Button>
+          </a>
+        </Link>
       }
     >
 
       {
-        list.length == 0
+        list.length === 0
           ? <Empty description={props.emptyDescription} />
           : list.map((content: Iissue, index: number) => {
             return (
               <IssueItem
+                // style __UI
+                type={props.type}
+                // parent & sub __self
                 title={content.title}
                 extra={content.score}
                 setList={setList}
-                type={props.type}
+                list={list}
                 key={content.id}
                 id={content.id}
               />

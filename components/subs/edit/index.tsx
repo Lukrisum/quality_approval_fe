@@ -1,47 +1,56 @@
 import React, { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { Button, Input } from "antd-mobile";
-import { testAtom } from "../../../model/quality";
 import { atom } from "jotai";
 import Link from "next/link";
+import { Iissue } from "../../../interfaces/interfaces";
+import useGetList from "../../../utils/get_list";
 
-export const ID = atom('')
-// export const uppercaseIDAtom = atom(
-//   (get) => get(ID).toUpperCase()
-// )
-
-console.log(ID)
+export const IDAtom = atom('')
+export const IDLnk = atom((get) => get(IDAtom))
+export const isAddAtom = atom(false)
+export const isAddLnk = atom((get) => get(isAddAtom))
 
 export default function Edit() {
-  const [list, setList] = useAtom(testAtom)
+
+  const [id] = useAtom(IDLnk)
+  const [isAdd] = useAtom(isAddLnk)
   const [text, setText] = useState('')
-  const [id, setId] = useAtom(ID)
+  const [list, setList] = useGetList(id.slice(0, 2))
 
-  const getText = () => {
-    list.map((issue) => {
-      if (issue.id === id) setText(issue.title)
-    })
-  }
+  useEffect(() => {
+    if (!isAdd) {
+      list.map((issue) => {
+        if (issue.id === id) setText(issue.title)
+      })
+    }
+  }, [])
 
-  const handelComfirm = () => {
-    const tempList = list
+  // todo change to getIssue() && change to useState<Iissue>() upper
+  const getListEdited = (): Array<Iissue> => {
+    const newList = [...list]
 
-    tempList.map((issue, index) => {
+    newList.map((issue, index) => {
       if (issue.id === id) {
         const newIssue = { ...issue, title: text }
-        tempList[index] = newIssue
-        console.log(newIssue)
+        newList[index] = newIssue
       }
     })
 
-    let newList = [...list]
-
-    setList(newList)
+    return newList
   }
 
-  useEffect(() => {
-    getText()
-  }, [])
+  const getListAdded = (): Array<Iissue> => {
+    const newList = [...list]
+    newList.push({ score: 100, title: text, id: id })
+    console.log(newList)
+    return newList
+  }
+
+  const handelComfirm = () => {
+    const newList = isAdd?getListAdded():getListEdited()
+    setList(newList)
+  }
 
   return (
     <div>
