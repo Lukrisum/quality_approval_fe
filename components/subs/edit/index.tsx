@@ -14,7 +14,7 @@ export const isAddLnk = atom((get) => get(isAddAtom))
 export default function Edit() {
 
   const [id] = useAtom(IDLnk)
-  const [isAdd] = useAtom(isAddLnk)
+  const [isAdd, setIsAdd] = useAtom(isAddAtom)
   const [text, setText] = useState('')
   const [list, setList] = useGetList(id.slice(0, 2))
 
@@ -43,18 +43,28 @@ export default function Edit() {
   const getListAdded = (): Array<Iissue> => {
     const newList = [...list]
     newList.push({ score: 100, title: text, id: id })
-    console.log(newList)
     return newList
   }
 
   const handelComfirm = () => {
-    const newList = isAdd?getListAdded():getListEdited()
+    let newList: Array<Iissue>
+    if (isAdd) {
+      newList = getListAdded()
+      setIsAdd(false)
+    }
+    else {
+      newList = getListEdited()
+    }
     setList(newList)
   }
 
   return (
     <div>
-      编辑页面
+      {
+        isAdd
+          ? <span>新建项目</span>
+          : <span>编辑页面</span>
+      }
       <Input placeholder="输入试试？" value={text} onChange={(inputValue) => setText(inputValue)}></Input>
       <Link href="/">
         <a>

@@ -88,9 +88,8 @@ export default function IssueCard(props: any) {
           <a>
             <Button
               size="mini"
-              // onClick={(e) => handelAddIssue(e, { title: "nmmsl", score: 200, id: `${getId(list.length)}` })}
-              onClick={() => { 
-                setId(getId(list.length)) 
+              onClick={() => {
+                setId(getId(list.length))
                 setIsAdd(true)
               }}
             >
