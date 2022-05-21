@@ -4,8 +4,8 @@ import mod from "./submit.module.scss"
 
 export default function Submit() {
 
-  const handelSkip = () => {
-    
+  const handelPop = () => {
+
   }
 
   return (
@@ -22,7 +22,7 @@ export default function Submit() {
             '--border-color': 'rgb(49,160,254)',
             'width': '10rem'
           }}
-          onClick={handelSkip}
+          onClick={handelPop}
         >
           暂 存
         </Button>
@@ -31,7 +31,8 @@ export default function Submit() {
           color="primary"
           style={{
             'width': '10rem'
-          }}>
+          }}
+        >
           提 交
         </Button>
 
