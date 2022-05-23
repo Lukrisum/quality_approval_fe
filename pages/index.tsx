@@ -4,7 +4,7 @@ import Head from '../components/common/head'
 
 if (typeof window !== 'undefined') {
   const  {scollManeger}  = require('../utils/scroll_maneger')
-  console.log(scollManeger)
+  // console.log(scollManeger)
   scollManeger()
 }
 

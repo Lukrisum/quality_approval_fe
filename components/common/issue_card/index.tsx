@@ -1,9 +1,8 @@
 import mod from "./issue_card.module.scss"
 import React, { useEffect, useState } from "react";
-import { Button, Card } from "antd-mobile";
+import { Button, Card, Dialog, Toast } from "antd-mobile";
 import { Empty } from "antd-mobile";
 import Link from "next/link";
-import Router from "next/router";
 import { Iissue } from "../../../interfaces/interfaces";
 import { useAtom } from "jotai";
 import { IDAtom, isAddAtom, titleAtom } from "../../subs/edit";
@@ -25,8 +24,7 @@ const IssueItem = (props: any) => {
     return newList
   }
 
-
-  const handelDeleteIssue = (e: any) => {
+  const handelDeleteIssue = async (e: any) => {
     e.stopPropagation()
     e.preventDefault()
 
@@ -35,7 +33,16 @@ const IssueItem = (props: any) => {
     // localStorage.removeItem(props.id.slice(0, 2))
 
     // props.setList([])
-    props.setList(getListDelete())
+    const result = await Dialog.confirm({
+      content: '确认删除？',
+    })
+    if (result) {
+      Toast.show({ content: '已删除', position: 'bottom' })
+      props.setList(getListDelete())
+    }
+    // else {
+    //   Toast.show({ content: '点击了取消', position: 'bottom' })
+    // }
     // localStorage.setItem(`${props.id.slice(0, 2)}`,JSON.stringify(getListDelete()))
   }
 
@@ -132,4 +139,3 @@ export default function IssueCard(props: any) {
     </Card>
   )
 }
-
