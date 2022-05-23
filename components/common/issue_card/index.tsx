@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "antd-mobile";
 import { Empty } from "antd-mobile";
 import Link from "next/link";
+import Router from "next/router";
 import { Iissue } from "../../../interfaces/interfaces";
 import { useAtom } from "jotai";
-import { IDAtom, isAddAtom } from "../../subs/edit";
+import { IDAtom, isAddAtom, titleAtom } from "../../subs/edit";
 import useGetList from "../../../utils/get_list";
 
 const IssueItem = (props: any) => {
   const [id, setId] = useAtom(IDAtom)
+  const [title, setTitle] = useAtom(titleAtom)
 
   const getListDelete = () => {
     let newList = [...props.list]
@@ -22,6 +24,7 @@ const IssueItem = (props: any) => {
 
     return newList
   }
+
 
   const handelDeleteIssue = (e: any) => {
     e.stopPropagation()
@@ -50,7 +53,10 @@ const IssueItem = (props: any) => {
             </>
           }
           className={(props.type === 'Y') ? mod['item-wrapper-Y'] : mod['item-wrapper-N']}
-          onClick={() => { setId(props.id) }}
+          onClick={() => {
+            setId(props.id)
+            setTitle(props.parentName)
+          }}
         />
       </a>
     </Link>
@@ -60,6 +66,7 @@ const IssueItem = (props: any) => {
 export default function IssueCard(props: any) {
   const [id, setId] = useAtom(IDAtom)
   const [isAdd, setIsAdd] = useAtom(isAddAtom)
+  const [title, setTitle] = useAtom(titleAtom)
   const [list, setList] = useGetList(props.cardKey)
 
   // todo localhost __init
@@ -80,7 +87,7 @@ export default function IssueCard(props: any) {
     <Card
       title={
         <span className={mod["card-title"]}>
-          {props.cardName}
+          {props.cardName + props.sign}
         </span>
       }
       extra={
@@ -90,6 +97,7 @@ export default function IssueCard(props: any) {
               size="mini"
               onClick={() => {
                 setId(getId(list.length))
+                setTitle(props.cardName)
                 setIsAdd(true)
               }}
             >
@@ -115,6 +123,7 @@ export default function IssueCard(props: any) {
                 list={list}
                 key={content.id}
                 id={content.id}
+                parentName={props.cardName}
               />
             )
           })
@@ -123,3 +132,4 @@ export default function IssueCard(props: any) {
     </Card>
   )
 }
+

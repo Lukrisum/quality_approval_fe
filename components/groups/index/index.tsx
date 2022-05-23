@@ -4,8 +4,9 @@ import Quality from "../../subs/quality";
 import Innovation from "../../subs/innovation";
 import Score from "../../subs/score";
 import Submit from "../../subs/submit";
-
+import Router from "next/router";
 export default function Index() {
+
   return (
     <>
 

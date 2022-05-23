@@ -9,18 +9,22 @@ import useGetList from "../../../utils/get_list";
 
 export const IDAtom = atom('')
 export const IDLnk = atom((get) => get(IDAtom))
+export const titleAtom = atom('')
+export const titleLnk = atom((get) => get(titleAtom))
 export const isAddAtom = atom(false)
 export const isAddLnk = atom((get) => get(isAddAtom))
 
 export default function Edit() {
 
   const [id] = useAtom(IDLnk)
+  const [title] = useAtom(titleLnk)
   const [isAdd, setIsAdd] = useAtom(isAddAtom)
 
   const [text, setText] = useState('')
   const [score, setScore] = useState(0)
 
   const [list, setList] = useGetList(id.slice(0, 2))
+  
   useEffect(() => {
     if (!isAdd) {
       list.map((issue) => {
@@ -70,6 +74,7 @@ export default function Edit() {
               ? <span>添加事项</span>
               : <span>编辑事项</span>
           }
+          extra={title}
           className={mod['card-Y']}
         >
         </Card>
@@ -100,9 +105,9 @@ export default function Edit() {
             <TextArea
               placeholder="请输入事项内容……"
               value={text}
-              autoSize={{ minRows: 3, maxRows: 5 }}
+              autoSize={{ minRows: 3, maxRows: 6 }}
               showCount
-              maxLength={75}
+              maxLength={100}
               onChange={(inputValue) => setText(inputValue)}
             />
           </div>
