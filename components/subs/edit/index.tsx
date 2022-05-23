@@ -71,8 +71,8 @@ export default function Edit() {
         <Card
           title={
             isAdd
-              ? <span>添加事项</span>
-              : <span>编辑事项</span>
+              ? <span className={mod.span}>添加事项</span>
+              : <span className={mod.span}>编辑事项</span>
           }
           extra={title}
           className={mod['card-Y']}
@@ -86,7 +86,7 @@ export default function Edit() {
             justify="between"
             block
           >
-            <span>分值</span>
+            <span className={mod.span}>分值</span>
             <Stepper
               defaultValue={52.0}
               value={score}
@@ -99,7 +99,7 @@ export default function Edit() {
           </Space>
         </List.Item>
         <List.Item>
-          <span className={mod.text}> 标题 </span>
+          <span className={mod.span}> 标题 </span>
           <br />
           <div className={mod['textarea-wrapper']}>
             <TextArea

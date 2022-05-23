@@ -118,7 +118,7 @@ export default function IssueCard(props: any) {
       {
         list.length === 0
           ? <Empty description={props.emptyDescription} />
-          : list.map((content: Iissue, index: number) => {
+          : list.map((content: Iissue) => {
             return (
               <IssueItem
                 // style __UI

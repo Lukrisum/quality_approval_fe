@@ -27,7 +27,7 @@ export default function Info() {
       <List
         header={<ParentListHeader title="📋 基本信息" extra={`测评总分：${totalScore}`} />}
         style={{
-          '--font-size': '.9rem'
+          '--font-size': '1rem'
         }}
       >
         <List.Item extra={basicInfo.code}>

@@ -71,9 +71,9 @@ export default function Score() {
               <Radio
                 value='radio1'
                 style={{
-                  '--icon-size': '18px',
-                  '--font-size': '14px',
-                  '--gap': '6px',
+                  '--icon-size': '1.8rem',
+                  '--font-size': '1.4rem',
+                  '--gap': '.6rem',
                 }}
               >
                 是
@@ -81,9 +81,9 @@ export default function Score() {
               <Radio
                 value='radio2'
                 style={{
-                  '--icon-size': '18px',
-                  '--font-size': '14px',
-                  '--gap': '6px',
+                  '--icon-size': '1.8rem',
+                  '--font-size': '1.4rem',
+                  '--gap': '.6rem',
                 }}
               >
                 否

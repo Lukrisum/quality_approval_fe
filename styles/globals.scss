@@ -9,3 +9,11 @@ body{
 *{
   text-decoration: none;
 }
+
+@media (max-width:370px) {
+  html{
+    font-size: 13px;
+  }
+
+  
+}
