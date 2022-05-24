@@ -1,0 +1,15 @@
+.img-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.7rem 0 7rem 0;
+  span{
+    display: inline-block;
+    width: 156px;
+    text-align: right;
+    letter-spacing: 2.1px;
+    font-size: 14px;
+    color: #99999999;
+  }
+}

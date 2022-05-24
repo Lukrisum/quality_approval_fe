@@ -1,11 +1,11 @@
 .left-title{
   font-weight: bold;
-  font-size: .9rem;
+  font-size: var(--font-size-normal);
   span{
     vertical-align:sub
   }
 }
 
 .input-wrapper{
-  width: 9rem;
+  width: 15rem;
 }

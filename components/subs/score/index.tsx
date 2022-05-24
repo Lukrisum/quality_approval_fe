@@ -23,7 +23,7 @@ export default function Score() {
               placeholder="请输入平均学分绩点"
               style={{
                 '--text-align': 'right',
-                '--font-size': '.7rem'
+                '--font-size': 'var(--font-size-big)'
               }}
               clearable
             />
@@ -35,7 +35,7 @@ export default function Score() {
             (function () {
               if (isSubjectEmpty) {
                 return (
-                  <span>* </span>
+                  <span> * </span>
                 )
               }
             })()
@@ -72,7 +72,7 @@ export default function Score() {
                 value='radio1'
                 style={{
                   '--icon-size': '1.8rem',
-                  '--font-size': '1.4rem',
+                  '--font-size': 'var(--font-size-big)',
                   '--gap': '.6rem',
                 }}
               >
@@ -82,7 +82,7 @@ export default function Score() {
                 value='radio2'
                 style={{
                   '--icon-size': '1.8rem',
-                  '--font-size': '1.4rem',
+                  '--font-size': 'var(--font-size-normal)',
                   '--gap': '.6rem',
                 }}
               >
@@ -100,7 +100,7 @@ export default function Score() {
               placeholder="请输入平均学分绩点"
               style={{
                 '--text-align': 'right',
-                '--font-size':'.9rem'
+                '--font-size':'var(--font-size-big)'
               }}
               clearable
             />

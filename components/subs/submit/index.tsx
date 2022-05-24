@@ -12,15 +12,12 @@ export default function Submit() {
     <div className={mod["submit-wrapper"]}>
       <Space
         justify="center"
-        style={{
-          '--gap-horizontal': '1.3rem'
-        }}
         block
       >
         <Button
           style={{
             '--border-color': 'rgb(49,160,254)',
-            'width': '10rem'
+            'width': 'var(--button-size-big)'
           }}
           onClick={handelPop}
         >
@@ -30,7 +27,7 @@ export default function Submit() {
         <Button
           color="primary"
           style={{
-            'width': '10rem'
+            'width': 'var(--button-size-big)'
           }}
         >
           提 交

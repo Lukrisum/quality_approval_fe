@@ -24,7 +24,7 @@ export default function Edit() {
   const [score, setScore] = useState(0)
 
   const [list, setList] = useGetList(id.slice(0, 2))
-  
+
   useEffect(() => {
     if (!isAdd) {
       list.map((issue) => {
@@ -71,8 +71,8 @@ export default function Edit() {
         <Card
           title={
             isAdd
-              ? <span className={mod.span}>添加事项</span>
-              : <span className={mod.span}>编辑事项</span>
+              ? <span className={mod["span-card-title"]}>添加事项</span>
+              : <span className={mod["span-card-title"]}>编辑事项</span>
           }
           extra={title}
           className={mod['card-Y']}
@@ -86,7 +86,7 @@ export default function Edit() {
             justify="between"
             block
           >
-            <span className={mod.span}>分值</span>
+            <span className={mod["span-list-title"]}>分值</span>
             <Stepper
               defaultValue={52.0}
               value={score}
@@ -99,7 +99,7 @@ export default function Edit() {
           </Space>
         </List.Item>
         <List.Item>
-          <span className={mod.span}> 标题 </span>
+          <span className={mod["span-list-title"]}> 标题 </span>
           <br />
           <div className={mod['textarea-wrapper']}>
             <TextArea
@@ -125,7 +125,7 @@ export default function Edit() {
             <Button
               style={{
                 '--border-color': 'rgb(49,160,254)',
-                'width': '10rem'
+                'width': 'var(--button-size-big)'
               }}
             >
               取消
@@ -138,7 +138,7 @@ export default function Edit() {
             <Button
               color="primary"
               onClick={handelComfirm}
-              style={{ 'width': '10rem' }}
+              style={{ 'width': 'var(--button-size-big)' }}
             >
               确定
             </Button>

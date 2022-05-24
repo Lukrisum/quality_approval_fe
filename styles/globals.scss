@@ -1,19 +1,26 @@
-html{
-  background-color:rgb(223, 219, 226);
+:root{
+  --font-size-bigger:1.7rem;
+  --font-size-big:1.6rem;
+  --font-size-normal:1.5rem;
+  --button-size-big:14rem;
 }
 
-body{
-  margin: 0;
+html {
+  background-color: rgb(223, 219, 226);
+  font-size: 62.5%;
 }
 
-*{
+body {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+* {
   text-decoration: none;
 }
 
-@media (max-width:370px) {
-  html{
-    font-size: 13px;
+@media (max-width: 370px) {
+  html {
+    font-size: 9px;
   }
-
-  
 }

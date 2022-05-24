@@ -4,9 +4,11 @@
   padding-top: 0.55rem;
   .card-N {
     border: 0.1rem red solid;
+    padding:0 1.2rem;
   }
   .card-Y {
     border: 0.1rem green solid;
+    padding:0 1.2rem;
   }
 }
 
@@ -18,6 +20,10 @@
   display: flex;
 }
 
-.span {
-  font-size: 1.02rem
+.span-card-title {
+  font-size: var(--font-size-normal)
+}
+
+.span-list-title {
+  font-size: var(--font-size-bigger)
 }
