@@ -1,5 +1,5 @@
-import Image from "next/image"
-import mod from "./head.module.scss"
+import Image from 'next/image'
+import mod from './head.module.scss'
 
 export default function Head({ children }: any) {
   return (
@@ -10,8 +10,8 @@ export default function Head({ children }: any) {
 
       {children}
 
-      <div className={mod["img-wrapper"]}>
-        <Image src="/logo.svg" height={50} width={150}/>
+      <div className={mod['img-wrapper']}>
+        <Image src="/logo.svg" height={50} width={150} />
         <span>南昌大学家园工作室</span>
       </div>
     </>

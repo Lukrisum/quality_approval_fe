@@ -1,18 +1,19 @@
-export interface Iissue {
-  title: string,
-  score: number,
-  operate?: string,
-  id:string
+export interface IIssue {
+  title: string
+  score: number
+  operate?: string
+  id: string
 }
 
-export interface Iinfo {
-  code:string,
-  name:string,
-  sex:string,
-  politics:string,
-  faculty:string,
-  class:string,
-  room:string,
-  job:string
+export interface IInfo {
+  studentId: string
+  name: string
+  sex: string
+  politics: string
+  faculty: string
+  classNumber: string
+  dormitoryNumber: string
+  job: string
 }
 
+export interface IInfoItem {}

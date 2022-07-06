@@ -1,15 +1,13 @@
-import React from "react";
-import Info from "../../subs/info";
-import Quality from "../../subs/quality";
-import Innovation from "../../subs/innovation";
-import Score from "../../subs/score";
-import Submit from "../../subs/submit";
-import Router from "next/router";
-export default function Index() {
+import React from 'react'
+import Info from '../../subs/info'
+import Quality from '../../subs/quality'
+import Innovation from '../../subs/innovation'
+import Score from '../../subs/score'
+import Submit from '../../subs/submit'
 
+export default function Index() {
   return (
     <>
-
       {/* 基本信息 */}
       <Info />
 
@@ -23,8 +21,7 @@ export default function Index() {
       <Innovation />
 
       {/* 暂存 or 提交 */}
-      <Submit/>
-
+      <Submit />
     </>
   )
 }

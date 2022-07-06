@@ -1,17 +1,19 @@
-import Router from 'next/router'
+namespace scrollManager {
+  let mo = function (e: any) {
+    e.preventDefault()
+  }
 
-let value = new Map<String, number>()
+  export function stop() {
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('touchmove', mo, { passive: false })
+  }
 
-const scollManeger = () => {
-  Router.events.on('routeChangeStart', (...args) => {
-    value.set(window.location.pathname, document.documentElement.scrollTop)
-  })
-
-  Router.events.on('routeChangeComplete', (...args) => {
-    document.documentElement.scrollTop = value.get(window.location.pathname) || 0
-  })
+  export function move() {
+    document.body.style.overflow = ''
+    document.removeEventListener('touchmove', mo)
+  }
 }
 
 module.exports = {
-  scollManeger
+  scrollManager,
 }
