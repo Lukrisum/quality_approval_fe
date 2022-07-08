@@ -9,8 +9,8 @@
 //
 // export const IDAtom = atom('')
 // export const IDLnk = atom((get) => get(IDAtom))
-// export const titleAtom = atom('')
-// export const titleLnk = atom((get) => get(titleAtom))
+// export const contextAtom = atom('');export const idAtom = atom('')
+// export const titleLnk = atom((get) => get(contextAtom))
 // export const isAddAtom = atom(false)
 //
 // export default function Edit() {

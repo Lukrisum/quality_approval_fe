@@ -1,7 +1,6 @@
 export interface IIssue {
-  title: string
+  context: string
   score: number
-  operate?: string
   id: string
 }
 
@@ -15,5 +14,3 @@ export interface IInfo {
   dormitoryNumber: string
   job: string
 }
-
-export interface IInfoItem {}

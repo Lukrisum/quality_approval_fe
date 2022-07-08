@@ -1,15 +1,70 @@
+import { FC } from 'react'
 import { Button, Card, List, Space, Stepper, TextArea } from 'antd-mobile'
 import mod_edit from './edit.module.scss'
+import { IIssue } from '../../../../interfaces/interfaces'
 
-let scroll: any = null
+let scroll: any
 
 if (typeof window !== 'undefined') {
-  let { scrollManager } = require('../../../utils/scroll_maneger')
+  let { scrollManager } = require('../../../../utils/scroll_maneger')
   scroll = scrollManager
 }
 
-export const Edit = ({ isAdd = false, title = '', score = 0, context = '', ...callbacks }) => {
-  const { setEditPopUp, setScore, setContext } = callbacks
+interface IEditProps {
+  type: string
+  isAdd: boolean
+  title: string
+  score: number
+  context: string
+  id: string
+  issueList: Array<IIssue>
+  setEditPopUp: (EditPopUp: boolean) => void
+  setScore: (score: number) => void
+  setContext: (context: string) => void
+  setIssueList: (issueList: Array<IIssue>) => void
+}
+
+export const Edit: FC<IEditProps> = props => {
+  const {
+    type = 'Y',
+    title = '',
+    context = '',
+    score = 0.0,
+    isAdd,
+    issueList = [],
+    id = '',
+    setEditPopUp,
+    setScore,
+    setContext,
+    setIssueList,
+  } = props
+
+  const getId = (list: Array<any>) => {
+    return `${new Date()}_${list.length}`
+  }
+
+  const clear = () => {
+    setContext('')
+    setScore(0.0)
+  }
+
+  const handleAddIssue = () => {
+    let newIssueList = [...issueList]
+    const id = getId(newIssueList)
+    newIssueList.push({ score, context, id })
+    setIssueList(newIssueList)
+    clear()
+  }
+
+  const handleUpdatessue = () => {
+    const [currentIssue] = issueList.filter(issue => issue.id === id)
+    const index = issueList.indexOf(currentIssue)
+    const newIssueList = [...issueList]
+    const newIssue = { score, context, id }
+    newIssueList[index] = newIssue
+    setIssueList(newIssueList)
+    clear()
+  }
 
   return (
     <div className={mod_edit['total-wrapper']} onClick={e => e.preventDefault()}>
@@ -23,7 +78,7 @@ export const Edit = ({ isAdd = false, title = '', score = 0, context = '', ...ca
             )
           }
           extra={<span className={mod_edit['span-card-extra']}>{title}</span>}
-          className={mod_edit['card-Y']}
+          className={type === 'Y' ? mod_edit['card-Y'] : mod_edit['card-N']}
         ></Card>
       </div>
       <br />
@@ -77,6 +132,9 @@ export const Edit = ({ isAdd = false, title = '', score = 0, context = '', ...ca
           color="primary"
           style={{ width: 'var(--button-size-big)' }}
           onClick={() => {
+            const action = isAdd ? handleAddIssue : handleUpdatessue
+            console.log(isAdd)
+            action()
             setEditPopUp(false)
             scroll?.move()
           }}

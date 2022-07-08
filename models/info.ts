@@ -10,7 +10,3 @@ export namespace INFOATOM {
   export const dormitoryNumberAtom = atom('')
   export const jobAtom = atom('')
 }
-
-export const infoAtom = atom(null, (get, set, update) => {
-  set(infoAtom, update)
-})

@@ -1,13 +1,6 @@
 import { INFOATOM } from '../../../models/info'
-import { WritableAtom } from 'jotai'
 
-export interface IInfoItem {
-  title: string
-  textAtom: WritableAtom<string, string>
-  regex?: string
-}
-
-export const infoConfigData: Array<IInfoItem> = [
+export const infoConfigData = [
   {
     title: '学号',
     textAtom: INFOATOM.studentIdAtom,
